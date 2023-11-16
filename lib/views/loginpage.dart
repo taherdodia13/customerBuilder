@@ -95,9 +95,9 @@ class LoginPage extends GetView<LoginController> {
               40.heightBox,
               MaterialButton(
                 onPressed: () {
-                  if (controller.emailController.text.isEmpty) {
+                  if (controller.emailController.text.trim().isEmpty) {
                     getDisplayAlert('Alert', 'Please enter a valid email');
-                  } else if (controller.passwordController.text.isEmpty) {
+                  } else if (controller.passwordController.text.trim().isEmpty) {
                     getDisplayAlert('Alert', 'Please enter a valid password');
                   } else {
                     controller.login();

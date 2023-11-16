@@ -75,14 +75,14 @@ class HomePage extends GetView<HomeController> {
                         ),
                         child: ListTile(
                           title: Text(
-                            controller.filteredDataList[index].name ?? '',
+                            controller.filteredDataList[index].name?.trim() ?? '',
                             style: TextStyle(
                                 color: AppColor.userDesc,
                                 fontSize: 18.sp,
                                 fontWeight: FontWeight.w700),
                           ),
                           subtitle: Text(
-                            'Description:  ${controller.filteredDataList[index].desc}',
+                            'Description:  ${controller.filteredDataList[index].desc?.trim()}',
                             style: TextStyle(
                                 color: AppColor.userDesc,
                                 fontSize: 14.sp,

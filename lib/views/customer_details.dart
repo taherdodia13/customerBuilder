@@ -15,11 +15,11 @@ class CustomerDetails extends StatelessWidget {
             icon: const Icon(Icons.edit),
             onPressed: () {
               Get.find<CreateCustomerController>().name.text =
-                  customer.name ?? '';
+                  customer.name?.trim() ?? '';
               Get.find<CreateCustomerController>().email.text =
-                  customer.email ?? '';
+                  customer.email?.trim() ?? '';
               Get.find<CreateCustomerController>().desc.text =
-                  customer.desc ?? '';
+                  customer.desc?.trim() ?? '';
               Get.find<CreateCustomerController>().phone.text =
                   customer.phone.toString();
               Get.find<CreateCustomerController>().customer = customer;
@@ -37,13 +37,13 @@ class CustomerDetails extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildDetail('Name', customer.name ?? ''),
+            _buildDetail('Name', customer.name?.trim() ?? ''),
             const SizedBox(height: 20),
-            _buildDetail('Email', customer.email ?? ''),
+            _buildDetail('Email', customer.email?.trim() ?? ''),
             const SizedBox(height: 20),
-            _buildDetail('Phone', customer.phone.toString() ?? ''),
+            _buildDetail('Phone', customer.phone.toString()),
             const SizedBox(height: 20),
-            _buildDetail('Description', customer.desc ?? ''),
+            _buildDetail('Description', customer.desc?.trim() ?? ''),
           ],
         ),
       ),

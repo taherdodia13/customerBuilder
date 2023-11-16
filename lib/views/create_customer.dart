@@ -53,10 +53,10 @@ class CreateCustomer extends GetView<CreateCustomerController> {
               ),
             ),
             _buildRoundedButton('Save', () {
-              String fullName = controller.name.text;
-              String email = controller.email.text;
-              String phone = controller.phone.text;
-              String desc = controller.desc.text;
+              String fullName = controller.name.text.trim();
+              String email = controller.email.text.trim();
+              String phone = controller.phone.text.trim();
+              String desc = controller.desc.text.trim();
 
               RegExp nameRegex = RegExp(r'^[A-Za-z]{1,16}\s[A-Za-z]{1,16}$');
               RegExp emailRegex = RegExp(
@@ -77,13 +77,13 @@ class CreateCustomer extends GetView<CreateCustomerController> {
                 }
                 Get.toNamed(AppPages.home);
               } else {
-                if (!nameRegex.hasMatch(fullName) || (fullName.isEmpty)) {
+                if (!nameRegex.hasMatch(fullName.trim()) || (fullName.trim().isEmpty)) {
                   Get.snackbar('Error', 'Please enter full name');
-                } else if ((!emailRegex.hasMatch(email)) || (email.isEmpty)) {
+                } else if ((!emailRegex.hasMatch(email.trim())) || (email.trim().isEmpty)) {
                   Get.snackbar('Error', 'Please enter correct email');
                 } else if ((!phoneRegex.hasMatch(phone)) || phone.isEmpty) {
                   Get.snackbar('Error', 'Please enter correct phone number');
-                } else if (desc.isEmpty) {
+                } else if (desc.trim().isEmpty) {
                   Get.snackbar('Error', 'Please enter description information');
                 } else {
                   Get.snackbar('Error', 'Please enter valid information');

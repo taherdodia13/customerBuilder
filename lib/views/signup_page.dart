@@ -99,7 +99,15 @@ class SignUpPage extends GetView<SignUpController> {
                     fontSize: 18.0,
                   ),
                 ).onTap(() async {
-                  await controller.register();
+                  if (controller.emailController.text.trim().isEmpty) {
+                    getDisplayAlert('Alert', 'Enter a valid email');
+                  } else if (controller.passwordController.text
+                      .trim()
+                      .isEmpty) {
+                    getDisplayAlert('Alert', 'Enter a valid password');
+                  } else {
+                    await controller.register();
+                  }
                 }),
               ),
               20.heightBox,

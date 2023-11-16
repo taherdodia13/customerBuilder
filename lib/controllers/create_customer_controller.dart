@@ -15,10 +15,10 @@ class CreateCustomerController extends GetxController {
     customer = Get.arguments;
 
     if (customer != null) {
-      name.text = customer?.name ?? '';
-      email.text = customer?.email ?? '';
-      phone.text = (customer?.phone ?? '').toString();
-      desc.text = customer?.desc ?? '';
+      name.text = customer?.name?.trim() ?? '';
+      email.text = customer?.email?.trim() ?? '';
+      phone.text = (customer?.phone ?? '').toString().trim();
+      desc.text = customer?.desc?.trim() ?? '';
       isUpdating = true;
     }
     super.onInit();
@@ -49,10 +49,10 @@ class CreateCustomerController extends GetxController {
         loadingDialog();
         var result = await Get.find<RestService>().createCustomer(
           CreateCustomerInputModel(
-            email: email.text,
-            desc: desc.text,
+            email: email.text.trim(),
+            desc: desc.text.trim(),
             phone: int.tryParse(phone.text) ?? 0,
-            name: name.text,
+            name: name.text.trim(),
             userId: AppData.userId,
           ),
         );
@@ -84,10 +84,10 @@ class CreateCustomerController extends GetxController {
         loadingDialog();
         var result = await Get.find<RestService>().updateCustomer(
             CreateCustomerInputModel(
-              email: email.text,
-              desc: desc.text,
+              email: email.text.trim(),
+              desc: desc.text.trim(),
               phone: int.tryParse(phone.text) ?? 0,
-              name: name.text,
+              name: name.text.trim(),
               userId: AppData.userId,
             ),
             id);

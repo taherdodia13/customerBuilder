@@ -12,8 +12,8 @@ class SignUpController extends GetxController {
         loadingDialog();
 
         var result = await Get.find<RestService>().signup(SignUpInputModel(
-          email: emailController.text,
-          password: passwordController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
         ));
         if (result.id != 0) {
           Get.back();

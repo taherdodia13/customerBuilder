@@ -19,16 +19,16 @@ class LoginController extends GetxController {
           Get.back();
 
           if (result.data.any((element) =>
-              (element.email == emailController.text &&
-                  element.password == passwordController.text))) {
+              (element.email == emailController.text.trim() &&
+                  element.password == passwordController.text.trim()))) {
             AppData.userId = result.data
-                .where((element) => (element.email == emailController.text &&
-                    element.password == passwordController.text))
+                .where((element) => (element.email == emailController.text.trim() &&
+                    element.password == passwordController.text.trim()))
                 .first
                 .id;
             AppData.email = result.data
-                .where((element) => (element.email == emailController.text &&
-                    element.password == passwordController.text))
+                .where((element) => (element.email == emailController.text.trim() &&
+                    element.password == passwordController.text.trim()))
                 .first
                 .email
                 .toString();
